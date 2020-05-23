@@ -1,0 +1,26 @@
+<script src="https://unpkg.com/mathjs@4.3.0/dist/math.min.js"></script>
+<script src="NeuralNetwork.js"></script>
+<script>
+nn = new NeuralNetwork();
+nn.addLayer(8, 11);
+nn.addLayer(11, 1);
+
+console.log("OLD Nuevos Pesos:");
+console.log(nn.weights);
+
+nn.learn([0, 0, 1, 0, 0, 0, 1, 0], 0);
+nn.learn([0, 1, 1, 1, 0, 1, 1, 1], 1);
+nn.learn([1, 0, 1, 1, 1, 0, 1, 1], 1);
+nn.learn([0, 1, 0, 1, 0, 1, 0, 1], 1);
+nn.learn([1, 0, 0, 1, 1, 0, 0, 1], 1);
+nn.learn([1, 1, 1, 0, 1, 1, 1, 0], 0);
+nn.learn([0, 0, 0, 0, 0, 0, 0, 0], 0);
+
+nn.train(10000);
+
+//console.log("Nuevos Pesos:");
+//console.log(nn.weights);
+
+console.log("Calcular [1, 1, 0] -> ?: ");
+console.log(nn.think([1, 0, 0, 1, 1, 0, 0, 1]));
+</script>
